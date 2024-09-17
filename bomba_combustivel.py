@@ -2,33 +2,40 @@ class BombaCombustivel:
     def __init__(self, quantidade, valor):  
         self.__valor_litro = valor
         self.__quantidade = quantidade
-        
-        if BombaCombustivel:
-            quantidade > 100
-            return(-1)
-        else:
-             return self.__valor
 
-        
-
-    def get_valor (self):
-        return self.__valor
+    def get_valor(self):
+        return self.__valor_litro
     
-    def get_quantidade (self):
+    def get_quantidade(self):
         return self.__quantidade
     
+    def set_valor(self, valor):
+        self.__valor_litro = valor
+    
     def abastecer_por_litros(self, litros):
-        # valor_litro = preco do comb
-        total = litros * self.__valor_litro
-        return total
+        if litros > self.__quantidade:
+            return -1
+        else:
+            total = litros * self.__valor_litro
+            self.__quantidade -= litros
+            return total
     
     def abastecer_por_valor(self, valor):
-        self.total_abastecido += valor / 3  # Soma o valor abastecido ao total
-        self.saldo_total += valor  # Adiciona o valor ao saldo total
-        return valor
+        litros = valor / self.__valor_litro
+        if litros > self.__quantidade:
+            return -1
+        else:
+            self.__quantidade -= litros
+            return litros
 
-# Testing
+# Testando
 
-bomba = BombaCombustivel(100, 2)
-resultado = bomba.abastecer_por_litros(500)
-print(resultado)
+bomba = BombaCombustivel(1000, 2)
+resultado = bomba.abastecer_por_litros(20)
+print(resultado)  # Deve imprimir 40
+print(bomba.get_quantidade())  # Deve imprimir 80
+
+bomba = BombaCombustivel(1000, 2)
+resultado = bomba.abastecer_por_valor(100)
+print(resultado)  # Deve imprimir 25
+print(bomba.get_quantidade())  # Deve imprimir 75

@@ -4,8 +4,8 @@ from main import perguntar_litros, perguntar_valor
 class BombaEtanol(BombaCombustivel):
     def __init__(self, quantidade, valor):
         super().__init__(quantidade, valor)
-        self.total_abastecido = 0
-        self.saldo_total = 0  # Inicializa o saldo total
+        self.total_abastecido()
+        self.saldo_total()# Inicializa o saldo total
 
     def abastecer_por_valor(self, valor):
         self.total_abastecido += valor / 2  # Soma o valor abastecido ao total
@@ -41,8 +41,8 @@ class BombaEtanol_litros(BombaCombustivel):
 class BombaGasolina(BombaCombustivel):
     def __init__(self, quantidade, valor):
         super().__init__(quantidade, valor)
-        self.total_abastecido = 0
-        self.saldo_total = 0  # Inicializa o saldo total
+        self.total_abastecido()
+        self.saldo_total()  # Inicializa o saldo total
 
     def abastecer_por_valor(self, valor):
         self.total_abastecido += valor / 3  # Soma o valor abastecido ao total
