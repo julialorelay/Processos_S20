@@ -1,11 +1,14 @@
 class BombaCombustivel:
-    def __init__(self, quantidade, valor):  
+    def __init__(self, valor, quantidade):  
         self.__valor_litro = valor
         self.__quantidade = quantidade
 
-    def get_valor(self):
+    def get_preco(self):
         return self.__valor_litro
     
+    def set_quantidade(self, novo_valor):
+        self.__quantidade = novo_valor
+
     def get_quantidade(self):
         return self.__quantidade
     
@@ -27,15 +30,3 @@ class BombaCombustivel:
         else:
             self.__quantidade -= litros
             return litros
-
-# Testando
-
-bomba = BombaCombustivel(1000, 2)
-resultado = bomba.abastecer_por_litros(20)
-print(resultado)  # Deve imprimir 40
-print(bomba.get_quantidade())  # Deve imprimir 80
-
-bomba = BombaCombustivel(1000, 2)
-resultado = bomba.abastecer_por_valor(100)
-print(resultado)  # Deve imprimir 25
-print(bomba.get_quantidade())  # Deve imprimir 75
